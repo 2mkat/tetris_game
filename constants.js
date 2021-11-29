@@ -11,8 +11,8 @@ const COLORS = [
   'blue',
   'orange',
   'yellow',
-  'green',
-  'purple',
+  'Lime',
+  'Fuchsia',
   'red'
 ];
 
