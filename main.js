@@ -59,7 +59,8 @@ function handleKeyPress(event) {
   }
   if (event.keyCode === KEY.ESC) {
     gameOver();
-  } else if (moves[event.keyCode]) {
+  }
+  else if (moves[event.keyCode]) {
     event.preventDefault();
     // Get new state
     let p = moves[event.keyCode](board.piece);
@@ -67,7 +68,8 @@ function handleKeyPress(event) {
       // Hard drop
       if (document.querySelector('#pause-btn').style.display === 'block') {
           dropSound.play();
-      }else{
+      }
+      else {
         return;
       }
       
@@ -77,7 +79,8 @@ function handleKeyPress(event) {
         p = moves[KEY.DOWN](board.piece);
       }
       board.piece.hardDrop();
-    } else if (board.valid(p)) {
+    }
+    else if (board.valid(p)) {
       if (document.querySelector('#pause-btn').style.display === 'block') {
         movesSound.play();
       }
@@ -171,6 +174,46 @@ function pause() {
   sound.pause();
 }
 
+function left() {
+  let p = moves[KEY.LEFT](board.piece);
+  if (board.valid(p)) {
+    if (document.querySelector('#pause-btn').style.display === 'block') {
+      movesSound.play();
+    }
+    board.piece.move(p);
+  }
+}
+
+function right() {
+  let p = moves[KEY.RIGHT](board.piece);
+  if (board.valid(p)) {
+    if (document.querySelector('#pause-btn').style.display === 'block') {
+      movesSound.play();
+    }
+    board.piece.move(p);
+  }
+}
+
+function up() {
+  let p = moves[KEY.UP](board.piece);
+  if (board.valid(p)) {
+    if (document.querySelector('#pause-btn').style.display === 'block') {
+      movesSound.play();
+    }
+    board.piece.move(p);
+  }
+}
+
+function down() {
+  let p = moves[KEY.DOWN](board.piece);
+  if (board.valid(p)) {
+    if (document.querySelector('#pause-btn').style.display === 'block') {
+      movesSound.play();
+    }
+    board.piece.move(p);
+  }
+}
+
 function showHighScores() {
   const highScores = JSON.parse(localStorage.getItem('highScores')) || [];
   const highScoreList = document.getElementById('highScores');
@@ -185,7 +228,7 @@ function checkHighScore(score) {
   const lowestScore = highScores[NO_OF_HIGH_SCORES - 1]?.score ?? 0;
 
   if (score > lowestScore) {
-    const name = prompt('You got a highscore! Enter name:');
+    const name = prompt('You got a high score! Enter name:');
     const newScore = { score, name };
     saveHighScore(newScore, highScores);
     showHighScores();
