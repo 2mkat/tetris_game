@@ -7,9 +7,9 @@ const LINES_PER_LEVEL = 10;
 const NO_OF_HIGH_SCORES = 10;
 const COLORS = [
   'none',
-  'cyan',
-  'blue',
-  'orange',
+  'LightSeaGreen',
+  'Navy',
+  'OrangeRed',
   'yellow',
   'Lime',
   'Fuchsia',
