@@ -1,0 +1,86 @@
+* {
+  font-family: 'Press Start 2P', cursive;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 350px 320px 200px;
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%, 0);
+}
+
+.left-column {
+  display: flex;
+  flex-direction: column;
+}
+
+.right-column {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.game-board {
+  border: solid 2px;
+  background: rgba(0, 0, 0, 0.65);
+}
+
+.play-button {
+  background-color: #ff1744;
+  font-size: 16px;
+  padding: 15px 30px;
+  cursor: pointer;
+}
+
+.left-button {
+  background-color: #d07b0b;
+  font-size: 16px;
+  padding: 10px 15px;
+  cursor: pointer;
+  position:relative;
+  left:-548px;
+  top:205px;;
+}
+
+.right-button {
+  background-color: #d07b0b;
+  font-size: 16px;
+  padding: 10px 15px;
+  cursor: pointer;
+  position:relative;
+  left:-338px;
+  top:156px;;
+}
+
+.down-button {
+  background-color: #d07b0b;
+  font-size: 16px;
+  padding: 10px 15px;
+  cursor: pointer;
+  position:relative;
+  left:-128px;
+  top:107px;;
+}
+
+.up-button {
+  background-color: #d07b0b;
+  font-size: 16px;
+  padding: 10px 15px;
+  cursor: pointer;
+  position:relative;
+  left:84px;
+  top:57px;
+}
+
+#pause-btn {
+  display: none;
+}
+
+#sound-speaker{
+  font-size:30px;
+}
+
+.sound-item{
+  cursor:pointer;
+}
