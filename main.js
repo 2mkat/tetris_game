@@ -32,8 +32,7 @@ const moves = {
   [KEY.RIGHT]: (p) => ({ ...p, x: p.x + 1 }),
   [KEY.DOWN]: (p) => ({ ...p, y: p.y + 1 }),
   [KEY.SPACE]: (p) => ({ ...p, y: p.y + 1 }),
-  [KEY.UP]: (p) => board.rotate(p, ROTATION.RIGHT),
-  [KEY.Q]: (p) => board.rotate(p, ROTATION.LEFT)
+  [KEY.UP]: (p) => board.rotate(p, ROTATION.RIGHT)
 };
 
 let board = new Board(ctx, ctxNext);
