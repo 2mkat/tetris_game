@@ -32,7 +32,8 @@ const moves = {
   [KEY.RIGHT]: (p) => ({ ...p, x: p.x + 1 }),
   [KEY.DOWN]: (p) => ({ ...p, y: p.y + 1 }),
   [KEY.SPACE]: (p) => ({ ...p, y: p.y + 1 }),
-  [KEY.UP]: (p) => board.rotate(p, ROTATION.RIGHT)
+  [KEY.UP]: (p) => board.rotate(p, ROTATION.RIGHT),
+  [KEY.Q]: (p) => board.rotate(p, ROTATION.LEFT)
 };
 
 let board = new Board(ctx, ctxNext);
@@ -66,12 +67,12 @@ function handleKeyPress(event) {
     if (event.keyCode === KEY.SPACE) {
       // Hard drop
       if (document.querySelector('#pause-btn').style.display === 'block') {
-          dropSound.play();
+        dropSound.play();
       }
       else {
         return;
       }
-      
+
       while (board.valid(p)) {
         account.score += POINTS.HARD_DROP;
         board.piece.move(p);
@@ -84,7 +85,7 @@ function handleKeyPress(event) {
         movesSound.play();
       }
       board.piece.move(p);
-      if (event.keyCode === KEY.DOWN && 
+      if (event.keyCode === KEY.DOWN &&
           document.querySelector('#pause-btn').style.display === 'block') {
         account.score += POINTS.SOFT_DROP;
       }
@@ -142,7 +143,7 @@ function gameOver() {
   ctx.font = '1px Arial';
   ctx.fillStyle = 'red';
   ctx.fillText('GAME OVER', 1.8, 4);
-  
+
   sound.pause();
   finishSound.play();
   checkHighScore(account.score);
@@ -218,8 +219,8 @@ function showHighScores() {
   const highScoreList = document.getElementById('highScores');
 
   highScoreList.innerHTML = highScores
-    .map((score) => `<li>${score.score} - ${score.name}`)
-    .join('');
+      .map((score) => `<li>${score.score} - ${score.name}`)
+      .join('');
 }
 
 function checkHighScore(score) {
