@@ -15,6 +15,16 @@
   flex-direction: column;
 }
 
+.left-column span {
+  display: inline;
+  background-color: #000000A5;
+  padding: 25px 45px;
+  color: #c01010;
+  font-size: 16px;
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
+}
+
 .right-column {
   display: flex;
   flex-direction: column;
@@ -40,7 +50,7 @@
   cursor: pointer;
   position:relative;
   left:-548px;
-  top:205px;;
+  top:205px;
 }
 
 .right-button {

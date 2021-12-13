@@ -9,6 +9,8 @@ let accountValues = {
   lines: 0
 };
 
+let flagPause = false;
+
 function updateAccount(key, value) {
   let element = document.getElementById(key);
   if (element) {
@@ -55,6 +57,9 @@ function addEventListener() {
 function handleKeyPress(event) {
   if (event.keyCode === KEY.P) {
     pause();
+  }
+  if(!flagPause){
+    return;
   }
   if (event.keyCode === KEY.ESC) {
     gameOver();
@@ -103,6 +108,7 @@ function resetGame() {
 function play() {
   addEventListener();
   if (document.querySelector('#play-btn').style.display == '') {
+    flagPause = false;
     resetGame();
   }
 
@@ -114,6 +120,11 @@ function play() {
   animate();
   document.querySelector('#play-btn').style.display = 'none';
   document.querySelector('#pause-btn').style.display = 'block';
+  document.getElementById("left-arrow").disabled = false;
+  document.getElementById("right-arrow").disabled = false;
+  document.getElementById("down-arrow").disabled = false;
+  document.getElementById("up-arrow").disabled = false;
+  flagPause = true;
   backgroundSound.play();
 }
 
@@ -147,6 +158,7 @@ function gameOver() {
   finishSound.play();
   checkHighScore(account.score);
 
+  flagPause = false;
   document.querySelector('#pause-btn').style.display = 'none';
   document.querySelector('#play-btn').style.display = '';
 }
@@ -168,8 +180,13 @@ function pause() {
   ctx.font = '1px Arial';
   ctx.fillStyle = 'yellow';
   ctx.fillText('PAUSED', 3, 4);
+  flagPause = false;
   document.querySelector('#play-btn').style.display = 'block';
   document.querySelector('#pause-btn').style.display = 'none';
+  document.getElementById("left-arrow").disabled = true;
+  document.getElementById("right-arrow").disabled = true;
+  document.getElementById("down-arrow").disabled = true;
+  document.getElementById("up-arrow").disabled = true;
   sound.pause();
 }
 
@@ -185,7 +202,7 @@ function left() {
 
 function right() {
   let p = moves[KEY.RIGHT](board.piece);
-  if (board.valid(p)) {
+  if (board.valid(p) && flagPause) {
     if (document.querySelector('#pause-btn').style.display === 'block') {
       movesSound.play();
     }
@@ -195,7 +212,7 @@ function right() {
 
 function up() {
   let p = moves[KEY.UP](board.piece);
-  if (board.valid(p)) {
+  if (board.valid(p) && flagPause) {
     if (document.querySelector('#pause-btn').style.display === 'block') {
       movesSound.play();
     }
@@ -205,7 +222,7 @@ function up() {
 
 function down() {
   let p = moves[KEY.DOWN](board.piece);
-  if (board.valid(p)) {
+  if (board.valid(p) && flagPause) {
     if (document.querySelector('#pause-btn').style.display === 'block') {
       movesSound.play();
     }
